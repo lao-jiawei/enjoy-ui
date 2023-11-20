@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "dev": "dumi dev",
+    "build:site": "rimraf doc-site && dumi build",
+    "preview:site": "cross-env SITE_BUILD_ENV=PREVIEW yarn run build:site && serve doc-site",
+    "deploy:site": "yarn run build:site && gh-pages -d doc-site"
   },
   "keywords": [],
   "author": "",
@@ -16,12 +20,16 @@
     "@types/react-dom": "^18.2.15",
     "@umijs/fabric": "^4.0.1",
     "commitizen": "^4.3.0",
+    "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
+    "dumi": "^2.2.14",
+    "gh-pages": "^6.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "serve": "^14.2.1",
     "typescript": "^5.2.2"
   },
   "lint-staged": {
@@ -47,6 +55,7 @@
     }
   },
   "dependencies": {
-    "prop-types": "^15.8.1"
+    "prop-types": "^15.8.1",
+    "rimraf": "^5.0.5"
   }
 }
